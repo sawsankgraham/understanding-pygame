@@ -19,8 +19,8 @@ def main():
         obstacle.draw(screen)
         player.draw(screen)
         player.handle_movement() 
-        if ( player.is_crash(obstacle.rects)):
-            sys.exit()
+        # if ( player.is_crash(obstacle.rects)):
+        #     sys.exit()
         clock.tick(vars.FPS)
         pg.display.flip()
 
