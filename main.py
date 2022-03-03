@@ -7,9 +7,12 @@ pg.init()
 pg.display.set_caption("Understanding PyGame")
 screen = pg.display.set_mode(vars.SIZE)
 clock = pg.time.Clock()
+pg.font.init()
 
 player = player.Player()
 obstacle = obstacle.Obstacle()
+font = pg.font.SysFont('Comic Sans MS', 30)
+
 
 def main():
     while True:
@@ -19,8 +22,11 @@ def main():
         obstacle.draw(screen)
         player.draw(screen)
         player.handle_movement() 
-        # if ( player.is_crash(obstacle.rects)):
-        #     sys.exit()
+        scoresurface = font.render(str(obstacle.score), False, (0, 255, 0))
+        screen.blit(scoresurface, (0,0))
+        if ( player.is_crash(obstacle.rects)):
+            print("Final Score: " + obstacle.score)
+            sys.exit()
         clock.tick(vars.FPS)
         pg.display.flip()
 

@@ -4,7 +4,8 @@ import vars
 
 class Obstacle:
     def __init__(self):
-        self.rects = [pg.rect.Rect(i * random.randint(100, 200), random.randint(vars.HEIGHT - 15, vars.HEIGHT - 5), vars.OBSTACLE_WIDTH, vars.OBSTACLE_HEIGHT) for i in range(10)]
+        self.score = 0
+        self.rects = [pg.rect.Rect((i * 200) + 400, random.randint(vars.HEIGHT - 15, vars.HEIGHT - 5), vars.OBSTACLE_WIDTH, vars.OBSTACLE_HEIGHT) for i in range(4)]
 
     def draw(self, screen):
         for rect in self.rects:
@@ -19,5 +20,6 @@ class Obstacle:
     def loop_around(self):
         for rect in self.rects:
             if rect.centerx < -10:
+                self.score += 1
                 rect.centerx =  vars.WIDTH + random.randint(100, 200)
                 rect.centery = random.randint(vars.HEIGHT - 15, vars.HEIGHT - 5)
