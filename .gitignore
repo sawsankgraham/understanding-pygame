@@ -1,2 +1,3 @@
 penv
 __pycache__
+*.pyc
